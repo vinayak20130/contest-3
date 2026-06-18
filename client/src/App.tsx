@@ -47,8 +47,10 @@ export function App() {
       throw new Error(payload.error ?? "Could not load project files.");
     }
 
+    console.log(payload,'this is payload');
+    console.log(response,'this is response');
     setSnapshot(payload);
-    setSelectedPath((currentPath) => payload.files.find((file: ProjectFile) => file.path === currentPath)?.path ?? payload.files[0]?.path ?? "");
+    // setSelectedPath((currentPath) => payload?.files.find((file: ProjectFile) => file.path === currentPath)?.path ?? payload.files[0]?.path ?? "");
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -71,7 +73,7 @@ export function App() {
       }
 
       setSnapshot(payload);
-      setSelectedPath(payload.files.find((file: ProjectFile) => file.path === selectedPath)?.path ?? payload.files[0]?.path ?? "");
+      // setSelectedPath(payload.files.find((file: ProjectFile) => file.path === selectedPath)?.path ?? payload.files[0]?.path ?? "");
       setPrompt("");
     } catch (caughtError) {
       setError(caughtError instanceof Error ? caughtError.message : "Something went wrong.");
@@ -105,7 +107,7 @@ export function App() {
             </button>
           </form>
 
-          {error && <div className="error-box">{error}</div>}
+          {/* {error && <div className="error-box">{error}</div>} */}
 
           <div className="history">
             <h2>Prompt history</h2>

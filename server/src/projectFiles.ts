@@ -30,7 +30,7 @@ export async function listProjectFiles(): Promise<ProjectFile[]> {
   return files.sort((left, right) => left.path.localeCompare(right.path));
 }
 
-async function walkProject(directory: string): Promise<string[]> {
+export async function walkProject(directory: string): Promise<string[]> {
   const entries = await readdir(directory, { withFileTypes: true });
   const files: string[] = [];
 
